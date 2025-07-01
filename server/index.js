@@ -2,10 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import routes from './routes/index.js'; // Adjust the path as necessary
+import env from 'dotenv';
 
+env.config(); // Load environment variables from .env file
 
 const app = express();
-const port = 5000 || process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(cors());
