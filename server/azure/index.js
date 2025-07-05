@@ -1,6 +1,8 @@
 import env from 'dotenv';
 import { QdrantVectorStore } from "@langchain/qdrant";
 import { AzureOpenAIEmbeddings } from "@langchain/openai";
+import { AzureOpenAI } from "openai";
+
 
 env.config();
 
@@ -17,3 +19,11 @@ export const vectorStore = async () => {
         collectionName: "langchainjs-testing",
     });
 };
+
+export const azureOpenAI = new AzureOpenAI({
+    apiKey: process.env.AZURE_OPENAI_CHAT_API_KEY,
+    endpoint: process.env.AZURE_OPENAI_CHAT_API_ENDPOINT,
+    deployment: "gpt-4o-mini",
+    apiVersion: "2024-04-01-preview",
+});
+
